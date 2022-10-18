@@ -1,4 +1,11 @@
-const colors = require('tailwindcss/colors');
+let colors = require('tailwindcss/colors');
+
+delete colors['lightBlue'];
+delete colors['warmGray'];
+delete colors['trueGray'];
+delete colors['coolGray'];
+delete colors['blueGray'];
+colors = { ...colors, ...{ transparent: 'transparent' } }
 
 module.exports = {
   content: [
@@ -7,7 +14,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        ...colors, //Usamos los colores extras
+        colors,
       },
     },
   },
