@@ -1,7 +1,6 @@
 import { useRef } from 'react';
 import { LockClosedIcon } from '@heroicons/react/solid';
 import { useAuth } from '@hook/useAuth';
-import Link from 'next/link';
 const Swal = require('sweetalert2');
 
 
@@ -22,7 +21,7 @@ export default function LoginPage() {
     .catch((err) => {
       Swal.fire({
         position: 'center',
-        icon: 'success',
+        icon: 'error',
         title: 'check your data',
         showConfirmButton: false,
         timer: 1500
