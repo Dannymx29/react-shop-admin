@@ -1,6 +1,10 @@
 import { useRef } from 'react';
 import { LockClosedIcon } from '@heroicons/react/solid';
 import { useAuth } from '@hook/useAuth';
+import Link from 'next/link';
+const Swal = require('sweetalert2');
+
+
 
 export default function LoginPage() {
   const emailRef = useRef(null);
@@ -14,8 +18,16 @@ export default function LoginPage() {
 
     auth.singIn(email, password).then(() => {
       console.log('aqui va mas logica')
-    }
-    );
+    })
+    .catch((err) => {
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'check your data',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    })
   };
   return (
     <>
