@@ -1,8 +1,19 @@
-* img {
-    width: 70% !important;
-    height: 70% !important;
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* img {
+    width: 70% !important;
+    height: 70% !important;
+    margin-top: 5px;
+    border-radius: 450px;
+    border: 1px solid;
+}
+#Hlogo {
+    width: 50px !important;
+    height: 50px !important;
+    margin-top: 0;
+    border-radius: 0;
+    border: 0px solid;
+}
+
