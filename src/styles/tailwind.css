@@ -17,3 +17,9 @@
     border: 0px solid;
 }
 
+#THP,
+#THPB {
+    width: 120px !important;
+    height: 75px !important;
+}
+
