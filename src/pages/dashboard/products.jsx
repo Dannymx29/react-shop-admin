@@ -1,6 +1,7 @@
 import { useState, Fragment } from 'react';
 import { CheckIcon, PlusIcon } from '@heroicons/react/solid';
 import Modal from '@common/Modal';
+import FormProduct from '@components/FormProduct';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -8,7 +9,7 @@ function classNames(...classes) {
 
 export default function products() {
     const [open, setOpen] =useState(false);
-  const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState([]);
 
   return (
     <>
@@ -106,7 +107,7 @@ export default function products() {
         </div>
       </div>
       <Modal open={open} setOpen={setOpen}>
-        <h1>hi</h1>
+        <FormProduct />
       </Modal>
     </>
   );
