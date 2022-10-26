@@ -10,9 +10,9 @@ import useAlert from '@hook/useAlert';
 export default function Products() {
     const [open, setOpen] = useState(false);
     const [products, setProducts] = useState([]);
-    const [alert, setAlert, toggleAlert] = useAlert();
+    const {alert, setAlert, toggleAlert} = useAlert();
 
-    useEffect(() => {
+      useEffect(() => {
       async function getProducts() {
         const response = await axios.get(endPoints.products.allProducts);
         setProducts(response.data);
