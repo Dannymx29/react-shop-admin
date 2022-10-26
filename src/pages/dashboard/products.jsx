@@ -1,11 +1,14 @@
 import { useState,  useEffect } from 'react';
-import { CheckIcon } from '@heroicons/react/solid';
+import { CheckIcon, XCircleIcon } from '@heroicons/react/solid';
 import axios from 'axios';
 import Modal from '@common/Modal';
 import FormProduct from '@components/FormProduct';
 import endPoints from '@services/api';
 import Alert from '@common/Alert';
 import useAlert from '@hook/useAlert';
+import { deleteProduct } from '@api/products';
+
+const Swal = require('sweetalert2');
 
 export default function Products() {
     const [open, setOpen] = useState(false);
@@ -19,11 +22,30 @@ export default function Products() {
       }
       try {
         getProducts();
-        
       } catch(error) {
-        
+        console.log(error);
       }
     }, [alert]);
+
+    const handleDelete = (id) => {
+      deleteProduct(id).then(() => {
+        Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Delete product successfully',
+            showConfirmButton: false,
+            timer: 1500,
+        });
+      }) .catch((err) => {
+        Swal.fire({
+          position: 'center',
+          icon: 'info',
+          title: 'check your id, please',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+    });
+    };
 
   return (
     <>
@@ -109,9 +131,7 @@ export default function Products() {
                         </a>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        <a href="#" className="text-indigo-600 hover:text-indigo-900">
-                          Delete
-                        </a>
+                        <XCircleIcon className="flex-shrink-0 h-6 w-6 text-gray-400 cursor-pointer" aria-hidden="true" onClick={() => handleDelete(product.id) } />
                       </td>
                     </tr>
                   ))}
