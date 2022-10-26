@@ -1,18 +1,33 @@
-import { useState, Fragment } from 'react';
-import { CheckIcon, PlusIcon } from '@heroicons/react/solid';
+import { useState,  useEffect } from 'react';
+import { CheckIcon } from '@heroicons/react/solid';
+import axios from 'axios';
 import Modal from '@common/Modal';
 import FormProduct from '@components/FormProduct';
+import endPoints from '@services/api';
+import Alert from '@common/Alert';
+import useAlert from '@hook/useAlert';
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ');
-}
-
-export default function products() {
-    const [open, setOpen] =useState(false);
+export default function Products() {
+    const [open, setOpen] = useState(false);
     const [products, setProducts] = useState([]);
+    const [alert, setAlert, toggleAlert] = useAlert();
+
+    useEffect(() => {
+      async function getProducts() {
+        const response = await axios.get(endPoints.products.allProducts);
+        setProducts(response.data);
+      }
+      try {
+        getProducts();
+        
+      } catch(error) {
+        
+      }
+    }, [alert]);
 
   return (
     <>
+    <Alert alert={alert} handleClose={toggleAlert} />
       <div className="lg:flex lg:items-center lg:justify-between mb-8">
       
         <div id="THP"className="flex-1 min-w-0">
@@ -107,7 +122,7 @@ export default function products() {
         </div>
       </div>
       <Modal open={open} setOpen={setOpen}>
-        <FormProduct />
+        <FormProduct setOpen={setOpen} setAlert={setAlert} />
       </Modal>
     </>
   );
