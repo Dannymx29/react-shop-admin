@@ -9,6 +9,7 @@
             "@pages/*": ["pages/*"],
             "@P-api/*": ["pages/api/*"],
             "@dashboard/*": ["pages/dashboard/*"],
+            "@edit/*": ["pages/dashboard/edit/*"],
             "@services/*": ["services/*"],
             "@api/*": ["services/api/*"],
             "@styles/*": ["styles/*"],

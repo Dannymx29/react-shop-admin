@@ -1,11 +1,13 @@
 import { useRef } from 'react';
-import { addProduct, deleteProduct, updateProduct } from '@services/api/products';
+import { useRouter } from 'next/router';
+import { addProduct, updateProduct } from '@api/products';
 const Swal = require('sweetalert2');
 
 
 
 export default function FormProduct({setAlert, setOpen, product}) {
   const formRef = useRef(null);
+  const router = useRouter();
 
   const handleSubmit = (event) => {
     event.preventDefault();
