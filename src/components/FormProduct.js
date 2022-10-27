@@ -3,9 +3,7 @@ import { useRouter } from 'next/router';
 import { addProduct, updateProduct } from '@api/products';
 const Swal = require('sweetalert2');
 
-
-
-export default function FormProduct({setAlert, setOpen, product}) {
+export default function FormProduct({ setAlert, setOpen, product }) {
   const formRef = useRef(null);
   const router = useRouter();
 
@@ -31,7 +29,7 @@ export default function FormProduct({setAlert, setOpen, product}) {
             icon: 'success',
             title: 'Product added successfully',
             showConfirmButton: false,
-            timer: 1500
+            timer: 1500,
           });
           setOpen(false);
         })
@@ -42,7 +40,7 @@ export default function FormProduct({setAlert, setOpen, product}) {
             title: 'check your id',
             text: `${error.message}`,
             showConfirmButton: false,
-            timer: 1500
+            timer: 1500,
           });
         });
     }
@@ -57,13 +55,25 @@ export default function FormProduct({setAlert, setOpen, product}) {
               <label htmlFor="title" className="block text-sm font-medium text-gray-700">
                 Title
               </label>
-              <input defaultValue={product?.title} type="text" name="title" id="title" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+              <input
+                defaultValue={product?.title}
+                type="text"
+                name="title"
+                id="title"
+                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+              />
             </div>
             <div className="col-span-6 sm:col-span-3">
               <label htmlFor="price" className="block text-sm font-medium text-gray-700">
                 Price
               </label>
-              <input defaultValue={product?.price} type="number" name="price" id="price" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+              <input
+                defaultValue={product?.price}
+                type="number"
+                name="price"
+                id="price"
+                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+              />
             </div>
             <div className="col-span-6">
               <label htmlFor="category" className="block text-sm font-medium text-gray-700">
